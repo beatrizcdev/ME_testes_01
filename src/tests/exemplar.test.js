@@ -22,16 +22,21 @@ describe('CT041 Descartar um exemplar perdido', () => {
 
     let idExemplar = 1
 
-    test('Retorna exemplar em status final', () => {
+    test('Retorna exemplar em status final', async () => {
         //Arrange
         const livro = new Exemplar(idExemplar)
-        livro.alterarStatus(1)
-        livro.alterarStatus(3)
-        livro.alterarStatus(4)
+        await livro.alterarStatus(1)
+        await livro.alterarStatus(2)
+        await livro.alterarStatus(3)
+        await livro.alterarStatus(4)
         let resultado
 
         //Act
-        resultado = livro.alterarStatus(9);
+        try {
+            resultado = await livro.alterarStatus(9);
+        } catch (e) {
+            resultado = e.message;
+        }
 
         //Assert
         expect(resultado).toBe("Exemplar em status final não permite nenhuma operação");

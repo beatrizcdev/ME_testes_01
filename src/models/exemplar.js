@@ -2,10 +2,9 @@ import IllegalArgumentException from "./IllegalArgumentException";
 import UnsupportedOperationException from "./UnsupportedOperationException";
 
 export default class Exemplar {
-
-  #idExemplar
-  #status
-  #qtdeEmprestimos
+  #idExemplar;
+  #status;
+  #qtdeEmprestimos;
 
   constructor(idExemplar) {
     this.#idExemplar = idExemplar;
@@ -29,7 +28,9 @@ export default class Exemplar {
     //Registra o empréstimo de um exemplar que esteja disponível ou reservado.
 
     if (this.#status === 4 || this.#status === 9) {
-      throw new UnsupportedOperationException("Exemplar em status final não permite nenhuma operação");
+      throw new UnsupportedOperationException(
+        "Exemplar em status final não permite nenhuma operação"
+      );
     } else if (this.#status === 1 || this.#status === 2) {
       this.#status = 3;
       this.#qtdeEmprestimos++;
@@ -45,14 +46,14 @@ export default class Exemplar {
     if (this.#status === 4 || this.#status === 9) {
       throw new Error("Exemplar em status final não permite nenhuma operação");
     } else if (this.#status === 3) {
-        if(this.#qtdeEmprestimos === 100){
-            this.#status = 5
-            this.#qtdeEmprestimos = 0
-            return true
-        }else{
-            this.#status = 1
-            return true
-        }
+      if (this.#qtdeEmprestimos === 100) {
+        this.#status = 5;
+        this.#qtdeEmprestimos = 0;
+        return true;
+      } else {
+        this.#status = 1;
+        return true;
+      }
     } else {
       return false;
     }
@@ -60,7 +61,6 @@ export default class Exemplar {
 
   async alterarStatus(status) {
     //Recebe o novo status e altera o status do exemplar em situações específicas.
-
     switch (this.#status) {
       case 4:
       case 9:
@@ -68,14 +68,19 @@ export default class Exemplar {
           "Exemplar em status final não permite nenhuma operação"
         );
 
-      //case 0:
-      case 2:
+      case 0:
         this.#status = 1;
         return true;
 
+      case 2:
+        if (status === 1 || status === 3) {
+          this.#status = status;
+        }
+        return true;
+
       case 1:
-        if (novoStatus === 2 || novoStatus === 5 || novoStatus === 9) {
-          this.#status = novoStatus;
+        if (status === 2 || status === 5 || status === 9) {
+          this.#status = status;
         } else {
           throw new IllegalArgumentException(
             "Novo status inválido para o status atual"
@@ -94,8 +99,8 @@ export default class Exemplar {
         return true;
 
       case 5:
-        if (novoStatus === 1 || novoStatus === 2) {
-          this.#status = novoStatus;
+        if (status === 1 || status === 2) {
+          this.#status = status;
         } else {
           throw new IllegalArgumentException(
             "Novo status inválido para o status atual"
@@ -107,8 +112,4 @@ export default class Exemplar {
         return 0;
     }
   }
-}
-
-async function IllegalArgumentException(message) {
-  throw new Error(message)
 }
