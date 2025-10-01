@@ -18,4 +18,28 @@ describe('CT021 Disponibiliza o exemplar e retorna status de sucesso', () => {
     });
 });
 
-//observação
+describe('CT041 Descartar um exemplar perdido', () => {
+
+    let idExemplar = 1
+
+    test('Retorna exemplar em status final', async () => {
+        //Arrange
+        const livro = new Exemplar(idExemplar)
+        await livro.alterarStatus(1)
+        await livro.alterarStatus(2)
+        await livro.alterarStatus(3)
+        await livro.alterarStatus(4)
+        let resultado
+
+        //Act
+        try {
+            resultado = await livro.alterarStatus(9);
+        } catch (e) {
+            resultado = e.message;
+        }
+
+        //Assert
+        expect(resultado).toBe("Exemplar em status final não permite nenhuma operação");
+        expect(livro.status).toBe(4)
+    });
+});
