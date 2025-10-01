@@ -29,43 +29,41 @@ export default class Exemplar {
 
       case 0:
       case 2:
-        this.status = 1;
-        break;
+        this._status = 1;
+        return true;
 
       case 1:
         if (novoStatus === 2 || novoStatus === 5 || novoStatus === 9) {
-          this.status = novoStatus;
+          this._status = novoStatus;
         } else {
           throw new IllegalArgumentException(
             "Novo status inválido para o status atual"
           );
         }
-        break;
+        return true;
 
       case 3:
         if (status === 4) {
-          this.status = status;
+          this._status = status;
         } else {
           throw new IllegalArgumentException(
             "Novo status inválido para o status atual"
           );
         }
-        break;
+        return true;
 
       case 5:
         if (novoStatus === 1 || novoStatus === 2) {
-          this.status = novoStatus;
+          this._status = novoStatus;
         } else {
           throw new IllegalArgumentException(
             "Novo status inválido para o status atual"
           );
         }
-        break;
+        return true;
 
       default:
         return 0;
     }
-
-    return this.status;
   }
 }
