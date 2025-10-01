@@ -17,3 +17,5 @@ describe('CT021 Disponibiliza o exemplar e retorna status de sucesso', () => {
         expect(livro.status).toBe(1)
     });
 });
+
+//observação
