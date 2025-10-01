@@ -40,6 +40,11 @@ Foram implementadas funções em JavaScript acompanhadas de seus respectivos tes
     ```
 
 
+# Instalação do node
+   Baixe e instale o node para Windows:  
+   [https://www.nodejs.tech/pt-br/download]
+   (https://www.nodejs.tech/pt-br/download)
+
 # Guia de Git Flow para Windows
 
 Este guia explica como instalar e usar o **Git Flow** em projetos colaborativos no Windows.
