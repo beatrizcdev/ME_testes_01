@@ -1,4 +1,5 @@
 import IllegalArgumentException from "./IllegalArgumentException";
+import UnsupportedOperationException from "./UnsupportedOperationException";
 
 export default class Exemplar {
 
@@ -28,7 +29,7 @@ export default class Exemplar {
     //Registra o empréstimo de um exemplar que esteja disponível ou reservado.
 
     if (this.#status === 4 || this.#status === 9) {
-      throw new Error("Exemplar em status final não permite nenhuma operação");
+      throw new UnsupportedOperationException("Exemplar em status final não permite nenhuma operação");
     } else if (this.#status === 1 || this.#status === 2) {
       this.#status = 3;
       this.#qtdeEmprestimos++;
@@ -67,7 +68,7 @@ export default class Exemplar {
           "Exemplar em status final não permite nenhuma operação"
         );
 
-      case 0:
+      //case 0:
       case 2:
         this.#status = 1;
         return true;
@@ -106,4 +107,8 @@ export default class Exemplar {
         return 0;
     }
   }
+}
+
+async function IllegalArgumentException(message) {
+  throw new Error(message)
 }
