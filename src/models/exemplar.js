@@ -69,13 +69,8 @@ export default class Exemplar {
         );
 
       case 0:
-        this.#status = 1;
-        return true;
-
       case 2:
-        if (status === 1 || status === 3) {
-          this.#status = status;
-        }
+        this.#status = 1;
         return true;
 
       case 1:
