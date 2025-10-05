@@ -23,6 +23,9 @@ export default class Exemplar {
   get qtdeEmprestimos() {
     return this.#qtdeEmprestimos;
   }
+  set status(status){
+    this.#status = status;
+  }
 
   async registrarEmprestimo() {
     //Registra o empréstimo de um exemplar que esteja disponível ou reservado.
