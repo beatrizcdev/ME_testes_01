@@ -1,15 +1,16 @@
 import Exemplar from "../models/exemplar";
 
-describe("CT021 Disponibiliza o exemplar e retorna status de sucesso", () => {
-  let idExemplar = 1;
+let idExemplar = 1;
 
-  test("Altera o status de 0 para 1", () => {
+describe("CT021 Disponibiliza o exemplar e retorna status de sucesso", () => {
+
+  test("Altera o status de 0 para 1", async () => {
     //Arrange
     const livro = new Exemplar(idExemplar);
     let resultado;
 
     //Act
-    resultado = livro.alterarStatus(1);
+    resultado = await livro.alterarStatus(1);
 
     //Assert
     expect(resultado).toBeTruthy();
@@ -18,7 +19,6 @@ describe("CT021 Disponibiliza o exemplar e retorna status de sucesso", () => {
 });
 
 describe("CT022 Disponibilizar um exemplar que está reservado", () => {
-  let idExemplar = 1;
 
   test("Alterar status para 1 de um livro com Status 2", async () => {
     //Arrange
@@ -35,9 +35,8 @@ describe("CT022 Disponibilizar um exemplar que está reservado", () => {
 });
 
 describe("CT023 Reservar um exemplar que está disponível", () => {
-  let idExemplar = 2;
 
-  test("Alterar status para 1 de um livro com Status 2", async () => {
+  test("Alterar status para 2 de um livro com Status 1", async () => {
     //Arrange
     const livro = new Exemplar(idExemplar);
     livro.status = 1;
@@ -52,7 +51,6 @@ describe("CT023 Reservar um exemplar que está disponível", () => {
 });
 
 describe("CT041 Descartar um exemplar perdido", () => {
-  let idExemplar = 1;
 
   test("Retorna exemplar em status final", async () => {
     //Arrange
