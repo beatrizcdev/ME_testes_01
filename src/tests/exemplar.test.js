@@ -57,3 +57,25 @@ describe("CT041 Descartar um exemplar perdido", () => {
     expect(livro.status).toBe(4);
   });
 });
+
+describe('CT023 Reservar um exemplar que está disponível', () => {
+
+    let idExemplar = 2
+    
+    test('Alterar status para 1 de um livro com Status 2', async () => {
+        
+        //Arrange
+        const livro = new Exemplar(idExemplar)
+        livro.status = 1
+
+        //Act
+        let resultado  = await livro.alterarStatus(2)
+
+        //Assert
+        expect(resultado).toBeTruthy();
+        expect(livro.status).toBe(2) 
+    });
+
+    })
+
+    
