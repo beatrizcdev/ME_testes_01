@@ -31,42 +31,7 @@ export default class Exemplar {
     this.#status = status;
   }
 
-  async registrarEmprestimo() {
-    //Registra o empréstimo de um exemplar que esteja disponível ou reservado.
-
-    if (this.#status === 4 || this.#status === 9) {
-      throw new UnsupportedOperationException(
-        "Exemplar em status final não permite nenhuma operação"
-      );
-    } else if (this.#status === 1 || this.#status === 2) {
-      this.#status = 3;
-      this.#qtdeEmprestimos++;
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  async registrarDevolucao() {
-    //Registra a devolução do exemplar que esteja emprestado.
-
-    if (this.#status === 4 || this.#status === 9) {
-      throw new Error("Exemplar em status final não permite nenhuma operação");
-    } else if (this.#status === 3) {
-      if (this.#qtdeEmprestimos === 100) {
-        this.#status = 5;
-        this.#qtdeEmprestimos = 0;
-        return true;
-      } else {
-        this.#status = 1;
-        return true;
-      }
-    } else {
-      return false;
-    }
-  }
-
-  async alterarStatus(status) {
+   async alterarStatus(status) {
     //Recebe o novo status e altera o status do exemplar em situações específicas.
     switch (this.#status) {
       case 4:
