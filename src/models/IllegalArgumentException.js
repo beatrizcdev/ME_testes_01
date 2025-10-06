@@ -1,6 +1,6 @@
 export default class IllegalArgumentException extends Error {
-    constructor(message) {
-        super(message);
-        this.name = "IllegalArgumentException";
-    }
+  constructor(message) {
+    super(message);
+    this.name = "IllegalArgumentException";
+  }
 }
