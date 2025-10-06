@@ -26,7 +26,7 @@ export default class Exemplar {
 
   set status(status) {
     this.#status = status;
-  }
+  }
 
   async registrarEmprestimo() {
     //Registra o empréstimo de um exemplar que esteja disponível ou reservado.
@@ -63,7 +63,7 @@ export default class Exemplar {
     }
   }
 
-   async alterarStatus(status) {
+  async alterarStatus(status) {
     //Recebe o novo status e altera o status do exemplar em situações específicas.
     switch (this.#status) {
       case 4:

@@ -74,4 +74,3 @@ describe("CT041 Descartar um exemplar perdido", () => {
     expect(livro.status).toBe(4);
   });
 });
-
