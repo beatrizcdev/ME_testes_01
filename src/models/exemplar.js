@@ -23,6 +23,9 @@ export default class Exemplar {
   get qtdeEmprestimos() {
     return this.#qtdeEmprestimos;
   }
+  set status(status){
+    this.#status = status;
+  }
 
   set status(status) {
     this.#status = status;
