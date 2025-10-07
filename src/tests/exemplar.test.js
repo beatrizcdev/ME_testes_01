@@ -51,7 +51,6 @@ describe("CT023 Reservar um exemplar que está disponível", () => {
 });
 
 describe("CT024 Colocar em restauração um exemplar que está disponível", () => {
-  let idExemplar = 1;
 
   test("Alterar status para 5 de um livro com Status 1", async () => {
     //Arrange
