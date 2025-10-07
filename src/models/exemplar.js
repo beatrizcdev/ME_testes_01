@@ -27,12 +27,10 @@ export default class Exemplar {
     this.#status = status;
   }
 
-
   async alterarStatus(status) {
     //Recebe o novo status e altera o status do exemplar em situações específicas.
     switch (this.#status) {
       case 4:
-      case 9:
         throw new Error(
           "Exemplar em status final não permite nenhuma operação"
         );
@@ -51,29 +49,7 @@ export default class Exemplar {
           );
         }
         return true;
-
-      case 3:
-        if (status === 4) {
-          this.#status = status;
-        } else {
-          throw new IllegalArgumentException(
-            "Novo status inválido para o status atual"
-          );
-        }
-        return true;
-
-      case 5:
-        if (status === 1 || status === 2) {
-          this.#status = status;
-        } else {
-          throw new IllegalArgumentException(
-            "Novo status inválido para o status atual"
-          );
-        }
-        return true;
-
-      default:
-        return 0;
+        
     }
   }
 }
