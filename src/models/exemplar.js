@@ -49,6 +49,9 @@ export default class Exemplar {
         throw new Error(
           "Exemplar em status final não permite nenhuma operação"
         );
+
+      default:
+        return 0;
     }
   }
 }
