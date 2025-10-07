@@ -30,11 +30,6 @@ export default class Exemplar {
   async alterarStatus(status) {
     //Recebe o novo status e altera o status do exemplar em situações específicas.
     switch (this.#status) {
-      case 4:
-        throw new Error(
-          "Exemplar em status final não permite nenhuma operação"
-        );
-
       case 0:
       case 2:
         this.#status = 1;
@@ -49,7 +44,11 @@ export default class Exemplar {
           );
         }
         return true;
-        
+
+      case 4:
+        throw new Error(
+          "Exemplar em status final não permite nenhuma operação"
+        );
     }
   }
 }
